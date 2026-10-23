@@ -57,7 +57,7 @@ window.WEDDING_CONFIG = {
   eventLocations: {
     groomReception: {
       time: "10:30 · 29/11/2026",
-      venue: "",
+      venue: "Sân thể thao xóm Tùng Lâm (xóm 5 Phương Đình cũ)",
       hamlet: "Tùng Lâm",
       commune: "Tân Châu",
       province: "Nghệ An",
