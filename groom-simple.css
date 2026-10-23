@@ -1,0 +1,62 @@
+/* House-groom simplified variant: only render the groom reception card.
+   This file is included after the shared design system. */
+body.profile-groom-simple .schedule-section .location-options {
+  width: min(100%, 34rem);
+  margin-inline: auto;
+  grid-template-columns: minmax(0, 1fr);
+  justify-content: center;
+}
+
+body.profile-groom-simple .schedule-section .location-options > .event-card {
+  width: 100%;
+  min-height: 210px;
+}
+
+body.profile-groom-simple .story-photo-composition {
+  cursor: default;
+}
+
+@media (max-width: 550px) {
+  body.profile-groom-simple .hero.section-shell.has-hero-image .hero-media-block {
+    display: none;
+  }
+}
+
+
+/* Groom hero: three invitation lines share the date typography. */
+.hero.section-shell.has-hero-image .hero-copy > .hero-date-main.hero-invitation-line {
+  display: block;
+  max-width: 100%;
+  margin: .24rem auto .42rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* QUÝ KHÁCH is intentionally just a little larger; font, weight, and color
+   are inherited from the same hero-date-main class as the other two lines. */
+.hero.section-shell.has-hero-image .hero-copy > .hero-date-main.hero-recipient-line {
+  font-size: clamp(1.4rem, 1.67vw, 1.6rem);
+  margin-block: .28rem .5rem;
+}
+
+@media (min-width: 551px) and (max-width: 1099px) {
+  .hero.section-shell.has-hero-image .hero-copy > .hero-date-main.hero-recipient-line {
+    font-size: clamp(1.1rem, 2.65vw, 1.35rem);
+  }
+}
+
+@media (max-width: 550px) {
+  .hero.section-shell.has-hero-image .hero-copy > .hero-date-main.hero-invitation-line {
+    margin-block: .26rem .42rem;
+  }
+  .hero.section-shell.has-hero-image .hero-copy > .hero-date-main.hero-recipient-line {
+    font-size: clamp(1.17rem, 4.65vw, 1.35rem);
+    margin-block: .28rem .52rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero.section-shell.has-hero-image .hero-copy > .hero-date-main.hero-recipient-line {
+    font-size: 1.04rem;
+  }
+}
