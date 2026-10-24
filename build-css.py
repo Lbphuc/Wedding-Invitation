@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""Build a compact public stylesheet from the editable CSS source files."""
+"""Build site.min.css safely from editable source stylesheets.
+
+Whitespace is collapsed outside quoted strings, but spaces that can be meaningful
+in descendant selectors (especially before pseudo-classes such as :is/:not) are
+preserved. This intentionally favors correct selectors over a few saved bytes.
+"""
 from pathlib import Path
-import re
 
 ROOT = Path(__file__).resolve().parent
 SOURCES = ['styles.css', 'design-system.css', 'responsive.css', 'layout-system.css', 'groom-simple.css']
@@ -9,7 +13,7 @@ OUTPUT = ROOT / 'site.min.css'
 
 
 def strip_comments(text: str) -> str:
-    """Remove CSS comments while preserving quoted strings and escaped characters."""
+    """Remove CSS comments without modifying quoted strings."""
     out = []
     i = 0
     quote = None
@@ -41,10 +45,12 @@ def strip_comments(text: str) -> str:
 
 
 def compact(text: str) -> str:
+    """Collapse whitespace conservatively, retaining selector combinator spaces."""
     text = strip_comments(text)
     out = []
     i = 0
     quote = None
+    pending_space = False
     while i < len(text):
         ch = text[i]
         if quote:
@@ -57,35 +63,30 @@ def compact(text: str) -> str:
             i += 1
             continue
         if ch in ('"', "'"):
+            if pending_space and out and out[-1] not in '{},;' and ch not in '{},;':
+                out.append(' ')
+            pending_space = False
             quote = ch
             out.append(ch)
             i += 1
             continue
         if ch.isspace():
-            j = i + 1
-            while j < len(text) and text[j].isspace():
-                j += 1
-            prev = out[-1] if out else ''
-            nxt = text[j] if j < len(text) else ''
-            # Spaces adjacent to CSS punctuation are generally optional. Keep a
-            # normal space between identifiers (e.g. selector descendant / @media).
-            if prev in '{},:;>' or nxt in '{},:;>':
-                pass
-            elif prev == '' or nxt == '':
-                pass
-            else:
-                out.append(' ')
-            i = j
+            pending_space = True
+            i += 1
             continue
+        if pending_space and out:
+            prev = out[-1]
+            # Whitespace around braces, commas, and semicolons is never a
+            # descendant combinator; whitespace around ':' and '>' may be.
+            if prev not in '{},;' and ch not in '{},;':
+                out.append(' ')
+        pending_space = False
         out.append(ch)
         i += 1
-    result = ''.join(out)
-    result = re.sub(r';}', '}', result)
-    return result.strip()
+    return ''.join(out).strip()
 
 
 combined = '\n'.join((ROOT / item).read_text(encoding='utf-8') for item in SOURCES)
 minified = compact(combined)
-# CSS syntax is checked separately with tinycss2 during the QA workflow.
 OUTPUT.write_text(minified + '\n', encoding='utf-8')
 print(f'Built {OUTPUT.name}: {len(combined.encode())} -> {len(minified.encode())} bytes')

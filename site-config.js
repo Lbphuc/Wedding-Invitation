@@ -57,7 +57,9 @@ window.WEDDING_CONFIG = {
   eventLocations: {
     groomReception: {
       time: "10:30 · 29/11/2026",
-      venue: "Sân thể thao xóm Tùng Lâm (xóm 5 Phương Đình cũ)",
+      lunarDate: "Tức ngày 21 tháng 10 năm Bính Ngọ",
+      lunarDateEn: "Lunar date: the 21st day of the 10th lunar month, Year of the Horse",
+      venue: "Sân thể thao xóm Tùng Lâm (Xóm 5 Phương Đình cũ)",
       hamlet: "Tùng Lâm",
       commune: "Tân Châu",
       province: "Nghệ An",

@@ -60,3 +60,85 @@ body.profile-groom-simple .story-photo-composition {
     font-size: 1.04rem;
   }
 }
+
+/* Groom family event-page refinement: clearer dates across desktop, tablet and mobile. */
+.hero.section-shell.has-hero-image .hero-copy .hero-date-time,
+.hero.section-shell.has-hero-image .hero-copy .hero-date-lunar {
+  color: #294638;
+  font-weight: 700;
+}
+
+.schedule-section .location-options .event-card .event-lunar-date {
+  margin: .42rem 0 .12rem;
+  color: #294638;
+  font-size: clamp(.93rem, 1.02vw, 1.04rem);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.event-lunar-date[hidden] {
+  display: none;
+}
+
+.rsvp-form-section .section-heading-centered .rsvp-invitation-message {
+  max-width: 58rem;
+  margin: 0 auto;
+  color: #294638;
+  font-size: clamp(1.12rem, 1.55vw, 1.38rem);
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+@media (max-width: 1099px) {
+  .schedule-section .location-options .event-card .event-lunar-date {
+    font-size: clamp(.9rem, 1.8vw, 1rem);
+  }
+}
+
+@media (max-width: 550px) {
+  .hero.section-shell.has-hero-image .hero-copy .hero-date-time,
+  .hero.section-shell.has-hero-image .hero-copy .hero-date-lunar {
+    color: #294638;
+    font-weight: 700;
+  }
+
+  .schedule-section .location-options .event-card .event-lunar-date {
+    margin-top: .45rem;
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+
+  .rsvp-form-section .section-heading-centered .rsvp-invitation-message {
+    max-width: 36rem;
+    font-size: clamp(1.04rem, 4.15vw, 1.18rem);
+    line-height: 1.55;
+  }
+}
+
+
+
+/* Make every text element inside the sole groom-reception card bold on desktop, tablet, and mobile. */
+body.profile-groom-simple .schedule-section .location-options .event-card.location-option,
+body.profile-groom-simple .schedule-section .location-options .event-card.location-option * {
+  font-weight: 700 !important;
+}
+
+/* Groom-simple: stronger typography throughout the schedule/location section. */
+body.profile-groom-simple .schedule-section :is(h2, h3, p, span, strong, a, button) {
+  font-weight: 700;
+}
+
+
+/* Schedule card title and configured venue should be clear on all breakpoints. */
+body.profile-groom-simple .schedule-section .location-options .event-card h3,
+body.profile-groom-simple .schedule-section #map-location-title {
+  font-weight: 700;
+}
+
+body.profile-groom-simple .schedule-section .location-options .event-card .event-venue,
+body.profile-groom-simple .schedule-section .map-location-venue {
+  font-weight: 700;
+}

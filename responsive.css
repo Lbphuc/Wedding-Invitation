@@ -97,7 +97,7 @@ section[id] { scroll-margin-top: 6rem; }
   font-weight: 400;
   line-height: 1.22;
   letter-spacing: 0;
-  word-spacing: .08em;
+  word-spacing: normal;
   font-kerning: normal;
   font-variant-caps: normal;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
@@ -148,7 +148,7 @@ section[id] { scroll-margin-top: 6rem; }
   font-size: clamp(.96rem, 1.05vw, 1.08rem);
   font-weight: 400;
   line-height: 1.5;
-  letter-spacing: .015em;
+  letter-spacing: 0;
 }
 .hero .hero-date-main {
   margin-block: .06rem;
@@ -156,7 +156,7 @@ section[id] { scroll-margin-top: 6rem; }
   font-size: clamp(1.3rem, 1.55vw, 1.48rem);
   font-weight: 700;
   line-height: 1.32;
-  letter-spacing: .015em;
+  letter-spacing: 0;
 }
 
 /* Family details stay balanced in two columns; size is fluid but readable. */
@@ -588,7 +588,7 @@ section[id] { scroll-margin-top: 6rem; }
   .hero .hero-date-time, .hero .hero-date-lunar { font-size: clamp(.86rem, 1.75vw, .97rem); }
   .hero .hero-date-main { font-size: clamp(1.02rem, 2.45vw, 1.25rem); letter-spacing: 0; }
   .hero-family-grid { gap: clamp(.25rem, .8vw, .55rem); margin-top: .75rem; }
-  .hero .hero-family-grid .hero-family-label { font-size: clamp(.67rem, 1.3vw, .76rem); letter-spacing: .11em; }
+  .hero .hero-family-grid .hero-family-label { font-size: clamp(.67rem, 1.3vw, .76rem); letter-spacing: .05em; }
   .hero .hero-family-grid .hero-family-parents { font-size: clamp(.78rem, 1.6vw, .9rem); line-height: 1.42; }
   .hero .hero-family-grid .hero-family-address { font-size: clamp(.72rem, 1.4vw, .84rem); line-height: 1.42; }
   .hero .hero-image-placeholder { min-height: 13rem; padding: .5rem .25rem; gap: .45rem; }
@@ -724,7 +724,7 @@ section[id] { scroll-margin-top: 6rem; }
     padding: 0;
     text-align: center;
   }
-  .hero .eyebrow { margin-bottom: .45rem; font-size: var(--type-label); letter-spacing: .13em; }
+  .hero .eyebrow { margin-bottom: .45rem; font-size: var(--type-label); letter-spacing: .05em; }
   .hero h1.couple-names {
     gap: clamp(.22rem, .95vw, .38rem);
     margin-top: .28rem;
@@ -737,7 +737,7 @@ section[id] { scroll-margin-top: 6rem; }
     font-size: clamp(1.12rem, 5.4vw, 1.5rem);
     line-height: 1.25;
     letter-spacing: 0;
-    word-spacing: .08em;
+    word-spacing: normal;
   }
   .hero h1.couple-names > .ampersand {
     flex: 0 0 auto;
@@ -758,7 +758,7 @@ section[id] { scroll-margin-top: 6rem; }
   .hero .hero-date-main { font-size: clamp(1rem, 3.8vw, 1.22rem); line-height: 1.3; letter-spacing: 0; }
   .hero-family-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.25rem, 1.3vw, .5rem); margin-top: .65rem; }
   .hero-family-item { padding-inline: .08rem; }
-  .hero .hero-family-grid .hero-family-label { font-size: clamp(.68rem, 2.8vw, .78rem); line-height: 1.4; margin-bottom: .2rem; letter-spacing: .12em; }
+  .hero .hero-family-grid .hero-family-label { font-size: clamp(.68rem, 2.8vw, .78rem); line-height: 1.4; margin-bottom: .2rem; letter-spacing: .05em; }
   .hero .hero-family-grid .hero-family-parents { font-size: clamp(.82rem, 3.4vw, .94rem); line-height: 1.42; }
   .hero .hero-family-grid .hero-family-address { font-size: clamp(.76rem, 3.1vw, .86rem); line-height: 1.42; margin-top: .2rem; }
   .hero .text-link { margin-top: .45rem; font-size: var(--type-small); }
@@ -907,13 +907,13 @@ section[id] { scroll-margin-top: 6rem; }
   .section-shell, .hero.section-shell { width: calc(100% - .6rem); }
   .hero.section-shell { padding-inline: .35rem; }
   .hero h1.couple-names { gap: .15rem; padding-inline: 0; }
-  .hero h1.couple-names > .couple-name { font-size: 1.04rem; line-height: 1.3; letter-spacing: 0; word-spacing: .08em; }
+  .hero h1.couple-names > .couple-name { font-size: 1.04rem; line-height: 1.3; letter-spacing: 0; word-spacing: normal; }
   .hero h1.couple-names > .ampersand { font-size: .66rem; margin-inline: .02em; }
   .hero .intro { font-size: .76rem; line-height: 1.48; }
   .hero .hero-date-time, .hero .hero-date-lunar { font-size: .82rem; }
   .hero .hero-date-main { font-size: .96rem; line-height: 1.28; }
   .hero-family-grid { column-gap: .2rem; }
-  .hero .hero-family-grid .hero-family-label { font-size: .64rem; letter-spacing: .08em; }
+  .hero .hero-family-grid .hero-family-label { font-size: .64rem; letter-spacing: .02em; }
   .hero .hero-family-grid .hero-family-parents { font-size: .79rem; line-height: 1.36; }
   .hero .hero-family-grid .hero-family-address { font-size: .72rem; line-height: 1.36; }
   .countdown-grid { gap: .16rem; }

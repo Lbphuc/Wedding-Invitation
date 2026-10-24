@@ -76,8 +76,7 @@
       gallerySub: "Những khoảnh khắc chúng mình muốn lưu giữ.",
       galleryFooterNote: "Tất cả khoảnh khắc được sắp xếp trong cùng một album.",
       rsvpKicker: "PHẢN HỒI THAM DỰ",
-      rsvpTitle: "Quý khách sẽ đến chứ ?",
-      rsvpSubtitle: "Sự hiện diện của Quý khách sẽ làm ngày vui của chúng tôi thêm trọn vẹn. Xin vui lòng xác nhận tham dự bên dưới.",
+      rsvpSubtitle: "Sự hiện diện của Quý khách sẽ làm ngày vui của gia đình chúng tôi thêm trọn vẹn!",
       rsvpLabelName: "Họ và tên <span>*</span>",
       rsvpPhName: "Nhập họ và tên của bạn",
       rsvpLabelPhone: "Số điện thoại <small>(không bắt buộc)</small>",
@@ -91,17 +90,14 @@
       rsvpBtnSubmit: "Gửi xác nhận <span>→</span>",
       thankyouTitle: "Cảm ơn bạn",
       thankyouText: "đã dành thời gian<br>để gửi lời chúc và xác nhận tham dự!",
-      guestbookKicker: "LỜI CHÚC TỪ TRÁI TIM",
       guestbookTitle: "Sổ lưu bút",
       guestbookSubtitle: "Những lời chúc chân thành của bạn sẽ là món quà vô giá dành cho chúng tôi.",
-      guestbookStatus: "<i></i> Đang tải lời chúc đã duyệt…",
       wishLabelName: "Họ và tên <span>*</span>",
       wishPhName: "Nhập họ tên của bạn",
       wishLabelMessage: "Lời chúc <span>*</span>",
       wishPhMessage: "Gửi lời chúc của bạn...",
       wishBtnSubmit: "Gửi lời chúc <span>→</span>",
-      approvedTitle: "Lời chúc phúc yêu thương được gửi tới Dâu Rể",
-      approvedSub: "◉ Tự động cập nhật lời chúc đã duyệt",
+      approvedTitle: "Lời chúc phúc được gửi tới Dâu Rể",
       footerIntro: "Trân trọng · ",
       toastMap: "Vui lòng bổ sung địa chỉ hoặc link Google Maps cho địa điểm đã chọn.",
       toastMusic: "Không phát được nhạc. Vui lòng thử lại sau.",
@@ -164,8 +160,7 @@
       gallerySub: "Precious moments we cherish forever.",
       galleryFooterNote: "All memories are arranged inside one album.",
       rsvpKicker: "KINDLY REPLY",
-      rsvpTitle: "Will you be coming ?",
-      rsvpSubtitle: "Your presence will make our wedding day even more special. Please confirm your attendance below.",
+      rsvpSubtitle: "Your presence will make our family's joyful celebration even more special!",
       rsvpLabelName: "Full Name <span>*</span>",
       rsvpPhName: "Enter your full name",
       rsvpLabelPhone: "Phone Number <small>(optional)</small>",
@@ -179,17 +174,14 @@
       rsvpBtnSubmit: "Send Confirmation <span>→</span>",
       thankyouTitle: "Thank You",
       thankyouText: "for taking the time<br>to send your warm wishes and RSVP!",
-      guestbookKicker: "WORDS FROM THE HEART",
       guestbookTitle: "Wedding Guestbook",
       guestbookSubtitle: "Your heartfelt wishes and blessings are the most precious gift to us.",
-      guestbookStatus: "<i></i> Loading approved wishes…",
       wishLabelName: "Full Name <span>*</span>",
       wishPhName: "Enter your name",
       wishLabelMessage: "Blessing Message <span>*</span>",
       wishPhMessage: "Write your heartfelt wedding wishes...",
       wishBtnSubmit: "Send Wishes <span>→</span>",
       approvedTitle: "Loving wishes sent to the bride and groom",
-      approvedSub: "◉ Approved wishes update automatically",
       footerIntro: "With Love · ",
       toastMap: "Please add the selected location address or Google Maps link in site-config.js.",
       toastMusic: "Music could not be played. Please try again.",
@@ -482,6 +474,8 @@
 
     return {
       time: current.time || legacy.time || '',
+      lunarDate: current.lunarDate || config.lunarDateDisplay || '',
+      lunarDateEn: current.lunarDateEn || config.lunarDateDisplayEn || '',
       venue: current.venue || legacy.venue || '',
       hamlet: current.hamlet || '',
       commune: current.commune || '',
@@ -583,12 +577,18 @@
       card.setAttribute('aria-pressed', String(selected));
 
       const timeNode = card.querySelector('[data-location-field="time"]');
+      const lunarDateNode = card.querySelector('[data-location-field="lunarDate"]');
       const venueNode = card.querySelector('[data-location-field="venue"]');
       const addressNode = card.querySelector('[data-location-field="address"]');
       const addressPartsNode = card.querySelector('[data-location-address-parts]');
       if (timeNode) {
         timeNode.textContent = cardLocation.time && !isPlaceholderValue(cardLocation.time) ? cardLocation.time : '';
         timeNode.hidden = !timeNode.textContent;
+      }
+      if (lunarDateNode) {
+        const lunarDate = currentLang === 'en' ? cardLocation.lunarDateEn : cardLocation.lunarDate;
+        lunarDateNode.textContent = lunarDate && !isPlaceholderValue(lunarDate) ? lunarDate : '';
+        lunarDateNode.hidden = !lunarDateNode.textContent;
       }
 
       const venue = cardLocation.venue && !isPlaceholderValue(cardLocation.venue) ? cardLocation.venue : '';
@@ -853,18 +853,8 @@
   const wishMessage = wishForm && wishForm.elements.namedItem('wishMessage');
   const wishCount = document.getElementById('char-count');
   const wishesGrid = document.getElementById('wishes-grid');
-  const guestbookStatus = document.querySelector('.guestbook-heading .status-pill');
   let latestApprovedWishes = [];
   let wishRealtimeChannel = null;
-
-  function setGuestbookStatus(label, state) {
-    if (!guestbookStatus) return;
-    // Use only static labels authored in this script; never inject user-provided text.
-    guestbookStatus.replaceChildren();
-    const dot = document.createElement('i');
-    dot.style.backgroundColor = state === 'live' ? '#6e9b7a' : state === 'offline' ? '#cf7777' : '#d99b9c';
-    guestbookStatus.append(dot, document.createTextNode(` ${label}`));
-  }
 
   function formatWishDate(value) {
     const date = new Date(value);
@@ -942,15 +932,9 @@
       if (error) throw error;
       latestApprovedWishes = Array.isArray(data) ? data : [];
       renderApprovedWishes(latestApprovedWishes);
-      if (!quiet) {
-        const label = currentLang === 'en' ? 'Guestbook connected' : 'Đã tải lời chúc';
-        setGuestbookStatus(label, 'live');
-      }
     } catch (error) {
       console.error('[Guestbook] Không tải được lời chúc đã duyệt:', error);
       if (!quiet) {
-        const label = currentLang === 'en' ? 'Could not load wishes' : 'Chưa tải được lời chúc';
-        setGuestbookStatus(label, 'offline');
         wishesGrid.replaceChildren();
         const errorState = document.createElement('div');
         errorState.className = 'wish-empty';
@@ -976,16 +960,7 @@
         await loadApprovedWishes({ quiet: true });
       })
       .subscribe((status) => {
-        if (status === 'SUBSCRIBED') {
-          setGuestbookStatus(
-            currentLang === 'en' ? 'Realtime connected' : 'Realtime đã kết nối',
-            'live'
-          );
-        } else if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED') {
-          setGuestbookStatus(
-            currentLang === 'en' ? 'Realtime unavailable' : 'Realtime chưa khả dụng',
-            'offline'
-          );
+        if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED') {
           console.warn('[Guestbook] Realtime status:', status);
         }
       });
@@ -1061,11 +1036,9 @@
     loading.style.cssText = 'width:100%;box-sizing:border-box;padding:28px 18px;text-align:center;color:#78877c;font-size:13px;';
     loading.textContent = currentLang === 'en' ? 'Loading approved wishes…' : 'Đang tải lời chúc đã duyệt…';
     wishesGrid.replaceChildren(loading);
-    setGuestbookStatus(currentLang === 'en' ? 'Connecting…' : 'Đang kết nối…');
     loadApprovedWishes().then(startWishRealtime);
   } else if (wishesGrid) {
     wishesGrid.replaceChildren();
-    setGuestbookStatus(currentLang === 'en' ? 'Guestbook unavailable' : 'Sổ lưu bút chưa kết nối', 'offline');
     const empty = document.createElement('p');
     empty.id = 'wish-empty-state';
     empty.className = 'wish-empty';

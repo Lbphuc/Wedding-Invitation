@@ -116,7 +116,7 @@ body.admin-body {
   font-size: 20px;
   font-weight: 600;
   color: var(--admin-ink);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
 }
 
 .admin-brand-text p {
@@ -445,7 +445,7 @@ body.admin-body {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.3px;
   color: var(--admin-ink-muted);
   font-family: var(--admin-font-ui);
 }
@@ -691,7 +691,7 @@ body.admin-body {
   color: var(--admin-ink-muted);
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
   border-bottom: 1px solid var(--admin-line);
   white-space: nowrap;
 }

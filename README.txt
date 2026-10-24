@@ -14,6 +14,8 @@ CẤU TRÚC
 - admin.html, admin.js, admin.css: trang quản trị, chỉ nằm trong phiên bản nhà trai.
 - qr-code.html: tiện ích tạo mã QR, chỉ nằm trong phiên bản nhà trai.
 - script.js: RSVP, sổ lưu bút, bản đồ, ngôn ngữ, nhạc nền và tương tác còn dùng.
+- Thời gian và ngày âm lịch trong hero được làm đậm hơn; box lịch trình nhà trai có thêm dòng ngày âm đậm, tự đổi theo ngôn ngữ.
+- Phần RSVP bỏ tiêu đề câu hỏi và câu hướng dẫn xác nhận; chỉ giữ câu “Sự hiện diện của Quý khách sẽ làm ngày vui của gia đình chúng tôi thêm trọn vẹn!” với cỡ chữ lớn, đậm.
 - site-config.js: thông tin cô dâu chú rể và sự kiện.
 - styles.css, design-system.css, responsive.css, layout-system.css: CSS nguồn.
 - groom-simple.css: điều chỉnh riêng cho phiên bản đơn giản.
@@ -29,3 +31,5 @@ DEPLOY
 - Không đưa thư mục database/ hoặc file SQL vào document root.
 - Không đưa service_role key vào frontend; chỉ dùng publishable/anon key.
 - Trước khi gửi khách, kiểm thử RSVP, bản đồ nhà trai, ngôn ngữ, menu, mobile và admin.
+
+Typography maintenance (2026-10-23): letter spacing has been normalized across page sections, Google Fonts now requests the used 400–700 weights, and build-css.py preserves spaces before CSS pseudo-selectors such as :is(). Run `python build-css.py` after editing source CSS.

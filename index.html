@@ -29,14 +29,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lora:wght@400;500;600;700&display=swap"
     onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;500&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lora:wght@400;500;600;700&display=swap">
   </noscript>
   <meta name="theme-color" content="#f3f2e8">
-  <link rel="stylesheet" href="site.min.css?v=groom-simple-20261023-02">
+  <link rel="stylesheet" href="site.min.css?v=groom-card-all-text-bold-20261024">
 </head>
 
 <body class="profile-groom-simple">
@@ -131,9 +131,9 @@
       <div class="countdown-wrap">
         <img class="floral floral-count-left" src="assets/botanical/olive-sprig.webp" alt="" aria-hidden="true"
           width="728" height="755">
-        <!--<div class="countdown-content">
+        <!-- <div class="countdown-content">
           <p class="section-kicker" data-i18n="countdownKicker">CÙNG ĐẾM NGƯỢC ĐẾN NGÀY VUI</p>
-          <h2 data-i18n="countdownTitle">Thời gian còn lại</h2>
+           <h2 data-i18n="countdownTitle">Thời gian còn lại</h2>
           <div class="countdown-grid" aria-label="Đồng hồ đếm ngược">
             <div class="count-card"><strong id="days">--</strong><span id="unit-days" data-i18n="unitDays">Ngày</span>
             </div>
@@ -165,6 +165,7 @@
             </svg></span>
           <h3 data-i18n="groomReceptionTitle">Tiệc đám vui nhà trai</h3>
           <p class="event-time" data-location-field="time" hidden></p>
+          <p class="event-lunar-date" data-location-field="lunarDate" hidden></p>
           <p class="event-venue" data-location-field="venue" hidden></p>
           <span class="event-address-parts" data-location-address-parts hidden>
             <span class="event-address-part" hidden><span class="event-address-label"
@@ -240,9 +241,8 @@
     <section id="rsvp" class="rsvp-form-section section-shell section-pad layout-block layout-block--rsvp"
       data-layout-block="rsvp">
       <div class="section-heading-centered">
-        <!-- <p class="section-kicker" data-i18n="rsvpKicker">PHẢN HỒI THAM DỰ</p> -->
-        <h2 data-i18n="rsvpTitle">Xác nhận tham dự</h2>
-        <p data-i18n="rsvpSubtitle">Vui lòng điền thông tin bên dưới để chúng tôi chuẩn bị chu đáo nhất.</p>
+        <p class="rsvp-invitation-message" data-i18n="rsvpSubtitle">Sự hiện diện của Quý khách sẽ làm ngày vui của gia
+          đình chúng tôi thêm trọn vẹn!</p>
       </div>
       <div class="rsvp-layout">
         <form class="form-card" id="rsvp-form">
@@ -303,12 +303,10 @@
         width="728" height="755">
       <div class="guestbook-heading">
         <div>
-          <p class="section-kicker" data-i18n="guestbookKicker">LỜI CHÚC TỪ TRÁI TIM</p>
           <h2 data-i18n="guestbookTitle">Sổ lưu bút</h2>
           <p data-i18n="guestbookSubtitle">Những lời chúc chân thành của bạn sẽ là món quà vô giá dành cho chúng tôi.
           </p>
         </div>
-        <span class="status-pill" data-i18n-html="guestbookStatus"><i></i> Đang tải lời chúc đã duyệt…</span>
       </div>
       <div class="guestbook-layout">
         <div class="guestbook-form-col">
@@ -330,7 +328,6 @@
         <div class="guestbook-list-col">
           <div class="approved-heading">
             <h3 data-i18n="approvedTitle">Những lời chúc đã được duyệt</h3>
-            <!-- <span data-i18n="approvedSub">◉ Tự động cập nhật khi kết nối dữ liệu</span> -->
           </div>
           <div class="wishes-grid" id="wishes-grid"></div>
         </div>
@@ -350,8 +347,8 @@
   <!-- Supabase JavaScript v2: loaded before the app's configuration and logic -->
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0"></script>
   <script defer src="supabase-config.js"></script>
-  <script defer src="site-config.js?v=groom-simple-20261023-01"></script>
-  <script defer src="script.js?v=groom-simple-20261023-02"></script>
+  <script defer src="site-config.js?v=groom-simple-20261023-05"></script>
+  <script defer src="script.js?v=groom-simple-20261023-05"></script>
 
 </body>
 
